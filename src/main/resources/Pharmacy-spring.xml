@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--Populators-->
+    <bean class="pl.edu.vistula.populators.CategoryPopulator" id="categoryPopulator"/>
+    <bean class="pl.edu.vistula.populators.SubCategoryPopulator" id="subCategoryPopulator"/>
+    <bean class="pl.edu.vistula.populators.MedicineDetailsPopulator" id="medicineDetailsPopulator"/>
+<!--Converters-->
+    <bean class="pl.edu.vistula.converters.MedicineConverter" id="medicineConverter"/>
+
+<!--Services-->
+    <bean class="pl.edu.vistula.services.CategoryService" id="categoryService">
+        <constructor-arg name="categoryRepository" ref="categoryRepository"/>
+        <constructor-arg name="populator" ref="categoryPopulator"/>
+    </bean>
+    <bean class="pl.edu.vistula.services.SubCategoryService" id="subCategoryService">
+        <constructor-arg name="subCategoryRepository" ref="subCategoryRepository"/>
+        <constructor-arg name="populator" ref="subCategoryPopulator"/>
+    </bean>
+    <bean class="pl.edu.vistula.services.MedicineService" id="medicineService">
+        <constructor-arg name="medicineRepository" ref="medicineRepository"/>
+        <constructor-arg name="subCategoryRepository" ref="subCategoryRepository"/>
+        <constructor-arg name="converter" ref="medicineConverter"/>
+        <constructor-arg name="populator" ref="medicineDetailsPopulator"/>
+    </bean>
+    <bean class="pl.edu.vistula.services.OrderService" id="orderService">
+        <constructor-arg name="clientRepository" ref="clientRepository"/>
+        <constructor-arg name="medicineRepository" ref="medicineRepository"/>
+        <constructor-arg name="orderRepository" ref="orderRepository"/>
+    </bean>
+</beans>
