@@ -6,10 +6,11 @@ import lombok.NoArgsConstructor;
 import pl.edu.vistula.data.OrderStatus;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-@Entity
+@Entity(name="medicine_order")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +21,7 @@ public class Order {
     @ManyToOne
     private Client client;
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Medicine> medicine;
+    private Set<Medicine> medicine = new HashSet<>();
     private String trackingNumber = UUID.randomUUID().toString();
     private OrderStatus orderStatus = OrderStatus.PENDING;
 }

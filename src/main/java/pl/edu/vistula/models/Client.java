@@ -11,9 +11,9 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Contact contact;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
     private List<Order> orders;

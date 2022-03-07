@@ -1,7 +1,7 @@
 package pl.edu.vistula.controllers;
 
 public interface ControllerConstants{
-    String PREFIX="pharmacy/v1";
+    String PREFIX="api/v1";
     interface Category{
         String Controller =PREFIX+"/category";
         String CategoryId="category-id";
