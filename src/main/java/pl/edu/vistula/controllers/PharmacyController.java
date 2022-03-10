@@ -1,9 +1,12 @@
 package pl.edu.vistula.controllers;
 
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+@CrossOrigin("*")
 public interface PharmacyController<T> {
     ResponseEntity<List<T>> get();
     ResponseEntity<T> get(Integer id);

@@ -5,10 +5,12 @@ public interface ControllerConstants{
     interface Category{
         String Controller =PREFIX+"/category";
         String CategoryId="category-id";
+        String SubCategory ="/sub-category";
     }
     interface SubCategory{
-        String Controller=PREFIX+"/sub-category";
+        String Controller=PREFIX+Category.SubCategory;
         String SubCategoryId ="sub-category-id";
+        String SubCategoryName="sub-category-name";
     }
     interface Medicine{
         String Controller=PREFIX+"/medicine";
@@ -29,5 +31,6 @@ public interface ControllerConstants{
     }
     interface Order{
         String Controller="order";
+        String TrackOrder="/track/{tracker}";
     }
 }

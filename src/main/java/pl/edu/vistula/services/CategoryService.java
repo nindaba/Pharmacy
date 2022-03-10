@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import pl.edu.vistula.Exception.RecordNotFound;
 import pl.edu.vistula.dao.CategoryRepository;
 import pl.edu.vistula.data.CategoryData;
+import pl.edu.vistula.data.SubCategoryData;
 import pl.edu.vistula.data.SuccessResponse;
 import pl.edu.vistula.models.Category;
+import pl.edu.vistula.models.SubCategory;
 import pl.edu.vistula.populators.Populator;
 
 import java.net.URI;
@@ -16,6 +18,7 @@ import java.util.stream.Stream;
 public class CategoryService {
     private CategoryRepository categoryRepository;
     private Populator<Category,CategoryData> populator;
+    private Populator<SubCategory,SubCategoryData> subPopulator;
     /**
      *
      * @return List of populated Categories found in the database
@@ -79,5 +82,14 @@ public class CategoryService {
                 })
                 .map(category -> new SuccessResponse("Category edited Successfully"))
                 .orElseThrow(()-> new RecordNotFound("No Category Found matching the provided Id :"+id)); //not found and duplicated
+    }
+
+    public List<SubCategoryData> getSubCategories(Integer id) {
+       return categoryRepository.findById(id)
+                .map(category -> category.getSubCategories()
+                            .stream()
+                            .map(subPopulator::populate)
+                            .collect(Collectors.toList()))
+                .orElseThrow(()-> new RecordNotFound("No Category Found matching the provided Id :"+id));
     }
 }

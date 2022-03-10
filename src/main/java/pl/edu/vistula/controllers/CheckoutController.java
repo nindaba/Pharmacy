@@ -12,10 +12,9 @@ import pl.edu.vistula.services.OrderService;
 
 import static pl.edu.vistula.controllers.ControllerConstants.Checkout.Controller;
 import static pl.edu.vistula.controllers.ControllerConstants.Checkout.Purchase;
-
 @RestController
 @AllArgsConstructor
-public class CheckoutController{
+public class CheckoutController {
     private OrderService orderService;
     @PostMapping(Controller+Purchase)
     public ResponseEntity<SuccessResponse> purchase(@RequestBody OrderData data){

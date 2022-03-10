@@ -15,6 +15,7 @@
     <bean class="pl.edu.vistula.services.CategoryService" id="categoryService">
         <constructor-arg name="categoryRepository" ref="categoryRepository"/>
         <constructor-arg name="populator" ref="categoryPopulator"/>
+        <constructor-arg name="subPopulator" ref="subCategoryPopulator"/>
     </bean>
     <bean class="pl.edu.vistula.services.SubCategoryService" id="subCategoryService">
         <constructor-arg name="subCategoryRepository" ref="subCategoryRepository"/>

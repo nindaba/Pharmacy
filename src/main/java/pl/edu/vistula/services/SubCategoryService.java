@@ -81,10 +81,4 @@ public class SubCategoryService {
                 })
                 .orElseThrow(()-> new RecordNotFound("No SubCategory Found matching the provided Id : "+id));
     }
-
-    public SubCategoryData getCategory(String name) {
-        return subCategoryRepository.findByName(name)
-                .map(populator::populate)
-                .orElseThrow(()-> new RecordNotFound("No SubCategory Found matching the provided name : "+name));
-    }
 }

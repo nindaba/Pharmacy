@@ -11,6 +11,6 @@ import static pl.edu.vistula.controllers.ControllerConstants.Manufacturer.Contro
 
 @RepositoryRestResource(path = Controller)
 public interface ManufacturerRepository extends JpaRepository<Manufacturer,Integer> {
-    @Query("SELECT m FROM Manufacturer m WHERE m.name = ?1")
+//    @Query("SELECT m FROM Manufacturer m WHERE m.name = ?1")
     Optional<Manufacturer> findByName(String name);
 }

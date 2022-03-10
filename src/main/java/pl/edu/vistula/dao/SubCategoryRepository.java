@@ -10,6 +10,6 @@ import java.util.Set;
 
 @Repository
 public interface SubCategoryRepository extends JpaRepository<SubCategory,Integer> {
-    @Query("SELECT s FROM SubCategory s WHERE s.name = ?1")
+//    @Query("SELECT s FROM SubCategory s WHERE s.name = ?1")
     Optional<SubCategory> findByName(String name);
 }
